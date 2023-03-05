@@ -22,7 +22,6 @@ class Scraper:
         if r.status_code != requests.codes.ok:
             return None
 
-
         page_text = r.text # .encode('ascii', 'ignore')
         soup = bs4.BeautifulSoup(page_text, 'lxml')
         try:
@@ -30,7 +29,6 @@ class Scraper:
         except:
             self._hasnext = False
             
-
         page_data = {}
 
         for items in soup.find_all("div",  {"class": "quote"}):
@@ -72,9 +70,4 @@ class Crawler:
         return self._data
 
 
-
-
-
-        
-        
 print(Crawler().crawl())
